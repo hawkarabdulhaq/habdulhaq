@@ -2,7 +2,7 @@ import os
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-from pages import home, testimony, learning_platform, enrollment
+from pages import home, testimony, learning_platform, enrollment, learning  # Import learning module
 
 # Initialize the Dash app with a Bootstrap theme
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -18,6 +18,7 @@ sidebar = dbc.Col(
                 dbc.NavLink("Home", href="/", active="exact", className="nav-link"),
                 dbc.NavLink("Testimonials", href="/testimonials", active="exact", className="nav-link"),
                 dbc.NavLink("Learning Platform", href="/learning-platform", active="exact", className="nav-link"),
+                dbc.NavLink("Learning Content", href="/learning-content", active="exact", className="nav-link"),  # New link
                 dbc.NavLink("Enrollment", href="/enrollment", active="exact", className="nav-link"),
             ],
             vertical=True,
@@ -61,6 +62,8 @@ def display_page(pathname):
         return testimony.layout
     elif pathname == "/learning-platform":
         return learning_platform.layout
+    elif pathname == "/learning-content":  # Route for Learning Content
+        return learning.layout
     elif pathname == "/enrollment":
         return enrollment.layout
     return home.layout  # Default page for "/"
