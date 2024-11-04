@@ -15,8 +15,7 @@ layout = html.Div([
             height="480",
             style={"border": "0"},
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-            referrerPolicy="strict-origin-when-cross-origin",
-            allowFullScreen=True
+            referrerPolicy="strict-origin-when-cross-origin"
         )
     ], className="video-container"),
 
