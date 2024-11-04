@@ -18,21 +18,41 @@ layout = html.Div([
             style={"display": "inline"}
         ),
         html.Ul([
-            html.Li(html.Strong("One-on-One Online Session"), style={"font-weight": "bold"}, children=[
-                " to kickstart the week, allowing you to discuss your goals and clear any doubts in a personalized setting."
-            ]),
-            html.Li(html.Strong("Pre-recorded Lectures"), style={"font-weight": "bold"}, children=[
-                " covering the core concepts and topics in detail."
-            ]),
-            html.Li(html.Strong("Explanatory Modules"), style={"font-weight": "bold"}, children=[
-                " breaking down complex ideas with clear, digestible explanations."
-            ]),
-            html.Li(html.Strong("Interactive Discussions"), style={"font-weight": "bold"}, children=[
-                " on key topics to deepen your understanding."
-            ]),
-            html.Li(html.Strong("Assignments"), style={"font-weight": "bold"}, children=[
-                " to apply what you’ve learned and receive feedback."
-            ]),
+            html.Li(
+                children=[
+                    html.Strong("One-on-One Online Session"),
+                    " to kickstart the week, allowing you to discuss your goals and clear any doubts in a personalized setting."
+                ],
+                style={"font-weight": "bold"}
+            ),
+            html.Li(
+                children=[
+                    html.Strong("Pre-recorded Lectures"),
+                    " covering the core concepts and topics in detail."
+                ],
+                style={"font-weight": "bold"}
+            ),
+            html.Li(
+                children=[
+                    html.Strong("Explanatory Modules"),
+                    " breaking down complex ideas with clear, digestible explanations."
+                ],
+                style={"font-weight": "bold"}
+            ),
+            html.Li(
+                children=[
+                    html.Strong("Interactive Discussions"),
+                    " on key topics to deepen your understanding."
+                ],
+                style={"font-weight": "bold"}
+            ),
+            html.Li(
+                children=[
+                    html.Strong("Assignments"),
+                    " to apply what you’ve learned and receive feedback."
+                ],
+                style={"font-weight": "bold"}
+            ),
         ], className="content"),
 
         html.P(
