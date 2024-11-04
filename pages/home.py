@@ -1,67 +1,41 @@
-from dash import html, dcc
+from dash import html
 
-# Define the layout for the home page
+# Define the layout for the learning platform page
 layout = html.Div([
-    # Title and introduction
-    html.Div("Welcome to Personalized Python Training", className="title"),
-    html.Div("Perfect for beginners looking to learn coding in just one month and deploy their prototype projects.", className="content"),
+    html.H2("Our Learning Platform"),
 
-    # Embedded YouTube video
-    html.Div([
-        html.H3("Watch the demo video and get to know about the course"),
-        html.Iframe(
-            src="https://www.youtube.com/embed/G8BC2NIfpAs",
-            width="853",
-            height="480",
-            style={"border": "0"},
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-            referrerPolicy="strict-origin-when-cross-origin"
-        )
-    ], className="video-container"),
+    html.P("We offer a variety of learning options to suit your needs:", className="content"),
 
-    # Course overview section
-    html.Div("Course Overview", className="section-title"),
-    html.Div([
-        html.P("Here’s a quick summary of what we’ll cover:"),
-        html.Ul([
-            html.Li([
-                html.B("Setting Up Python: "),
-                "We’ll start by preparing your Python environment, ensuring you’re ready to begin your learning journey with a strong foundation."
-            ]),
-            html.Li([
-                html.B("Hawkar's Workflow: "),
-                "I’ll introduce my structured approach to learning Python, focusing on breaking down complex concepts into manageable steps for an efficient learning process."
-            ]),
-            html.Li([
-                html.B("Applying GitHub for App Creation: "),
-                "In this module, you'll learn to leverage GitHub to create a small app, setting the stage for your final project. By the end of the week, you’ll be equipped with the skills to develop, manage, and version control your project efficiently, all through GitHub."
-            ]),
-            html.Li([
-                html.B("Developing Your Final Project: "),
-                "Over the course of a week, you’ll work on a draft version of your final project, applying core coding concepts in a practical way. This phase will allow you to gather feedback, refine your approach, and ensure your project aligns with your goals."
-            ]),
-            html.Li([
-                html.B("Finalizing and Launching Your Project: "),
-                "In the final week, you’ll bring your project to completion. You’ll deploy the app, integrate key features, and showcase it within your community, creating a tangible outcome that reflects your learning journey."
-            ]),
-        ], className="content")
+    html.Ul([
+        html.Li([
+            html.Strong("One-on-One Online Session"),
+            html.Ul([
+                html.Li("4 weeks of personalized instruction"),
+                html.Li("Direct interaction with the instructor"),
+                html.Li("Customized learning pace"),
+            ])
+        ], style={"font-weight": "bold"}),
+        html.Li([
+            html.Strong("Group Sessions"),
+            html.Ul([
+                html.Li("Collaborative learning environment"),
+                html.Li("Group projects and discussions"),
+                html.Li("Ideal for colleagues or friends"),
+            ])
+        ], style={"font-weight": "bold"}),
+        html.Li([
+            html.Strong("Self-Paced Online Materials"),
+            html.Ul([
+                html.Li("Access to video lectures and tutorials"),
+                html.Li("Learn at your own pace"),
+                html.Li("Flexible scheduling"),
+            ])
+        ], style={"font-weight": "bold"}),
     ]),
 
-    # Pricing information section
-    html.Div("Pricing Options", className="section-title"),
-    html.Div([
-        html.P([
-            html.Span("One-on-One Session: 435,000IQD for a personalized experience", className="highlight"),
-            html.Br(),
-            html.Span("Group Session (3+ people): 315,000IQD per person (for a group of colleagues or friends)", className="highlight"),
-            html.Br(),
-            "Choose the option that best fits your needs and learning preferences."
-        ], className="content")
-    ]),
-
-    # Enrollment button
+    # Call-to-action
     html.Div(
-        dcc.Link("Enroll in the Course", href="/enrollment", className="button"), 
+        html.A("Explore More", href="/enrollment", className="button"),
         style={"marginTop": "20px"}
     )
 ])
