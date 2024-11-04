@@ -1,3 +1,4 @@
+import os
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
@@ -55,5 +56,7 @@ def display_page(pathname):
         return enrollment.layout
     return home.layout  # Default page for "/"
 
+# Bind to the environment's PORT if defined, otherwise default to 8050 for local testing
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(host="0.0.0.0", port=port, debug=True)
