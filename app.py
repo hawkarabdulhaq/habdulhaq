@@ -56,6 +56,9 @@ def display_page(pathname):
         return enrollment.layout
     return home.layout  # Default page for "/"
 
+# Define the server for gunicorn
+server = app.server
+
 # Bind to the environment's PORT if defined, otherwise default to 8050 for local testing
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8050))
