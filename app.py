@@ -8,9 +8,6 @@ from pages import home, testimony, learning_platform, enrollment
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.title = "Personalized Python Training"
 
-# Load custom CSS styles
-app.css.append_css({"external_url": "/assets/style.css"})
-
 # App layout with sidebar navigation
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),  # For URL-based routing
@@ -62,4 +59,4 @@ server = app.server
 # Bind to the environment's PORT if defined, otherwise default to 8050 for local testing
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8050))
-    app.run_server(host="0.0.0.0", port=port, debug=True)
+    app.run_server(host="0.0.0.0", port=port)
