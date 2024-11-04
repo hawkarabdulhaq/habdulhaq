@@ -1,0 +1,9 @@
+/* Example custom styles for Dash app */
+body {
+    font-family: Arial, sans-serif;
+}
+.sidebar {
+    background-color: #2C3E50;
+    color: #FFF;
+    padding: 10px;
+}
