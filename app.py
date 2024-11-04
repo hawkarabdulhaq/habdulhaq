@@ -1,6 +1,6 @@
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
-import dash_bootstrap_components as dbc  # Optional: for Bootstrap styling
+import dash_bootstrap_components as dbc
 from pages import home, testimony, learning_platform, enrollment
 
 # Initialize the Dash app
@@ -12,16 +12,19 @@ app.css.append_css({"external_url": "/assets/style.css"})
 
 # App layout with sidebar navigation
 app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),  # For routing
+    dcc.Location(id='url', refresh=False),  # For URL-based routing
     html.Div([
         # Sidebar with Logo and Navigation
         html.Img(src='/assets/logo.jpg', style={'width': '200px'}),
         html.H2("Personalized Python Training"),
-        html.Button("Home", id="home-button", n_clicks=0),
-        html.Button("Testimonials", id="testimonials-button", n_clicks=0),
-        html.Button("Learning Platform", id="learning-platform-button", n_clicks=0),
-        html.Button("Enrollment", id="enrollment-button", n_clicks=0),
-        # Contact and Calendly Info
+        html.Div([
+            dcc.Link("Home", href="/", className="nav-link"),
+            dcc.Link("Testimonials", href="/testimonials", className="nav-link"),
+            dcc.Link("Learning Platform", href="/learning-platform", className="nav-link"),
+            dcc.Link("Enrollment", href="/enrollment", className="nav-link"),
+        ], style={"display": "flex", "flexDirection": "column", "marginTop": "20px"}),
+        
+        # Contact Information and Calendly link
         html.Div([
             html.P("Contact:"),
             html.A("connect@habdulhaq.com", href="mailto:connect@habdulhaq.com"),
@@ -31,31 +34,26 @@ app.layout = html.Div([
             html.A("Discord Server", href="https://discord.gg/wcypuxhF"),
             html.Br(),
             html.A("Schedule a Demo on Calendly", href="https://calendly.com/hawkar_abdulhaq"),
-        ]),
-    ], style={'width': '20%', 'display': 'inline-block', 'vertical-align': 'top'}),
+        ], style={"marginTop": "30px"}),
+    ], style={'width': '20%', 'display': 'inline-block', 'verticalAlign': 'top'}),
 
-    # Main content area for pages
-    html.Div(id='page-content', style={'width': '75%', 'display': 'inline-block'}),
+    # Main content area for dynamic page rendering
+    html.Div(id='page-content', style={'width': '75%', 'display': 'inline-block', 'padding': '20px'}),
 ])
 
-# Callbacks for page navigation
+# Callback for rendering pages based on URL
 @app.callback(
     Output('page-content', 'children'),
-    [Input('home-button', 'n_clicks'),
-     Input('testimonials-button', 'n_clicks'),
-     Input('learning-platform-button', 'n_clicks'),
-     Input('enrollment-button', 'n_clicks')]
+    [Input('url', 'pathname')]
 )
-def display_page(home_clicks, testimonials_clicks, learning_platform_clicks, enrollment_clicks):
-    if home_clicks:
-        return home.layout
-    elif testimonials_clicks:
+def display_page(pathname):
+    if pathname == "/testimonials":
         return testimony.layout
-    elif learning_platform_clicks:
+    elif pathname == "/learning-platform":
         return learning_platform.layout
-    elif enrollment_clicks:
+    elif pathname == "/enrollment":
         return enrollment.layout
-    return home.layout  # Default page
+    return home.layout  # Default page for "/"
 
 if __name__ == '__main__':
     app.run_server(debug=True)
