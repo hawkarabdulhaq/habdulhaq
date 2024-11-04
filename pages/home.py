@@ -1,37 +1,38 @@
 from dash import html
+import dash_bootstrap_components as dbc
 
 # Define the layout for the learning platform page
 layout = html.Div([
-    html.H2("Our Learning Platform"),
+    html.H2("Our Learning Platform", className="title"),
 
     html.P("We offer a variety of learning options to suit your needs:", className="content"),
 
-    html.Ul([
-        html.Li([
+    dbc.ListGroup([
+        dbc.ListGroupItem([
             html.Strong("One-on-One Online Session"),
             html.Ul([
                 html.Li("4 weeks of personalized instruction"),
                 html.Li("Direct interaction with the instructor"),
                 html.Li("Customized learning pace"),
-            ])
-        ], style={"font-weight": "bold"}),
-        html.Li([
+            ], className="content")
+        ]),
+        dbc.ListGroupItem([
             html.Strong("Group Sessions"),
             html.Ul([
                 html.Li("Collaborative learning environment"),
                 html.Li("Group projects and discussions"),
                 html.Li("Ideal for colleagues or friends"),
-            ])
-        ], style={"font-weight": "bold"}),
-        html.Li([
+            ], className="content")
+        ]),
+        dbc.ListGroupItem([
             html.Strong("Self-Paced Online Materials"),
             html.Ul([
                 html.Li("Access to video lectures and tutorials"),
                 html.Li("Learn at your own pace"),
                 html.Li("Flexible scheduling"),
-            ])
-        ], style={"font-weight": "bold"}),
-    ]),
+            ], className="content")
+        ]),
+    ], className="mt-3"),
 
     # Call-to-action
     html.Div(
